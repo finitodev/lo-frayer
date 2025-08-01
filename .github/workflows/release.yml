@@ -16,7 +16,7 @@ jobs:
 
       - name: Release-Please
         id: release
-        uses: google-github-actions/release-please-action@v4
+        uses: googleapis/release-please-action@v4
         continue-on-error: true
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -45,4 +45,3 @@ jobs:
         with:
           name: amlathon-${{ steps.release.outputs.tag_name }}
           path: amlathon.zip
-
