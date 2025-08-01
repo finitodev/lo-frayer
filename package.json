@@ -2,21 +2,30 @@
   "name": "lo-frayer",
   "version": "0.1.0",
   "private": true,
-  "description": "Prototype of the Amalton browser extension built with Next.js",
+  "description": "Amalton Chrome extension built with Webpack, React, TypeScript, Tailwind CSS and shadcn/ui.",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "webpack serve --mode development --open",
+    "build": "webpack --mode production",
+    "lint": "echo \"No lint configured yet\"",
+    "zip": "npm run build && zip -r amlathon.zip dist/"
   },
   "dependencies": {
-    "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "shadcn-ui": "latest"
   },
   "devDependencies": {
+    "webpack": "latest",
+    "webpack-cli": "latest",
+    "webpack-dev-server": "latest",
     "typescript": "latest",
-    "@types/react": "latest",
-    "@types/node": "latest"
+    "ts-loader": "latest",
+    "style-loader": "latest",
+    "postcss": "latest",
+    "postcss-loader": "latest",
+    "autoprefixer": "latest",
+    "tailwindcss": "latest",
+    "html-webpack-plugin": "latest",
+    "copy-webpack-plugin": "latest"
   }
 }
