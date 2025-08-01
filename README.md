@@ -1,75 +1,47 @@
-# Chrome Extension
+# Amalton Extension – “lo‑frayer”
 
-A Chrome extension that makes a sound when an AI is done working.
+This repository contains the **Amalton** browser extension, which helps investors in the Israeli capital market understand and optimise brokerage fees.  The project is structured according to the multi‑stage work plan defined in `work_plan.md`.
 
-## Automated Releases & Commit Conventions
+## Technology stack
 
-This project uses [Release Please](https://github.com/googleapis/release-please) and [Conventional Commits](https://www.conventionalcommits.org/) to automate versioning, changelogs, and releases.
+- **Webpack 5** for bundling the extension
+- **React + TypeScript** for the popup UI
+- **Tailwind CSS** and **shadcn/ui** for the design system
+- **Release Please** for automated versioning and changelogs
 
-### Commit Message Guidelines
+## Getting started
 
-All commits must follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format:
+1. Install dependencies:
+   ```sh
+   npm install
+   ```
+2. Run a development build with hot reload:
+   ```sh
+   npm run dev
+   ```
+3. Build a production version of the extension:
+   ```sh
+   npm run build
+   ```
+4. Generate a zip file for publishing:
+   ```sh
+   npm run zip
+   ```
 
-```
-<type>[optional scope]: <description>
+The built files will be placed in the `dist/` directory.  The Chrome Web Store upload workflow uses this directory to create `amlathon.zip`.
 
-[optional body]
+## Project structure
 
-[optional footer(s)]
-```
+- `src/manifest.json` – Chrome extension manifest (version 3).
+- `src/index.tsx` – Entry point for the popup UI; mounts `App.tsx`.
+- `src/App.tsx` – Root React component; will be extended in later stages.
+- `src/popup.html` – HTML template for the popup.
+- `src/styles.css` – Tailwind CSS imports.
+- `webpack.config.js` – Build configuration (bundles TypeScript and CSS, copies the manifest, generates HTML).
+- `tailwind.config.js` & `postcss.config.js` – Styling configuration.
+- `.github/workflows/release.yml` – Release automation using Release Please and GitHub Actions.
+- `.github/workflows/publish.yml` – Workflow to upload the built zip to the Chrome Web Store on release.
 
-**Important:** The commit header (first line) must not exceed 100 characters in length.
+## Next steps
 
-**Examples:**
-- `feat: add notification sound for Claude`
-- `fix(ui): correct status card alignment`
-- `docs: update usage instructions in README`
-- `chore: update dependencies`
-
-**Common types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
-
-### Release Workflow
-
-- **Release PRs** are automatically created when you push Conventional Commits to `main`.
-- Merging a Release PR will:
-  - Tag a new version
-  - Build and zip the extension
-  - Attach the ZIP to the GitHub Release
-  - Publish to the Chrome Web Store (if secrets are configured)
-
-## Project Structure
-
-- **`src`**: Contains the core source code for the extension.
-  - **`background`**: Background scripts for managing state and events.
-  - **`components`**: Reusable React components.
-  - **`config`**: Configuration for different AI services.
-  - **`consts`**: Constants used throughout the application.
-  - **`hooks`**: Custom React hooks for managing state and side effects.
-  - **`screens`**: UI screens for the popup and the main application.
-  - **`utils`**: Utility functions.
-- **`public`**: Static assets, such as `popup.html`.
-- **`assets`**: Icons and other assets.
-- **`build`**: The compiled extension code.
-- **`e2e`**: End-to-end tests.
-
-## Design System
-
-The extension adheres to a consistent design system to ensure a cohesive user experience. When contributing, please ensure all UI components and modifications align with the established visual guidelines, including colors, typography, spacing, and component patterns. Refer to `src/consts/theme.ts` for design tokens and examine existing components for established patterns.
-
-### Local Development
-
-- **Build:** `npm run build`
-- **Zip for manual upload:** `npm run zip`
-
-### Resources
-
-- [Release Please Documentation](https://github.com/googleapis/release-please)
-- [Conventional Commits](https://www.conventionalcommits.org/)
-- [GitHub Actions Documentation](https://docs.github.com/en/actions)
-
-## Features
-
-## Design System & Theming
-
-All new UI elements and screens must be built according to the app's theme and design system. Reuse existing styles and components where possible to ensure visual consistency.
-
+This initial setup completes **Stage 1** of the work plan (base code + CI).  Future stages will introduce the TASE API wrapper, fee engine, onboarding UI, notifications, scrapers, design polish and more.
