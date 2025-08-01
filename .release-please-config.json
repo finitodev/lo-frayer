@@ -1,8 +1,12 @@
 {
-  "package-name": "lo-frayer",
+  "packages": {
+    ".": {
+      "release-type": "chrome-extension",
+      "manifest": "src/manifest.json",
+      "include-component-in-tag": false
+    }
+  },
   "bump-minor-pre-major": true,
   "include-v-in-tag": true,
-  "manifest": "src/manifest.json",
-  "release-type": "chrome-extension",
   "commit-filtering": "lenient"
 }
