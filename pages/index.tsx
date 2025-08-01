@@ -18,6 +18,8 @@ export default function Home() {
       </Head>
       <main className="max-w-2xl mx-auto">
         <h1 className="text-4xl font-bold mb-4">Welcome to Amalton</h1>
+        <p>Demo release line</p>
+        <p>Another line for nonconventional commit</p>
         <p className="mb-2">
           This is the prototype of the Amalton browser extension, built with Next.js.
           It aims to help investors in the Israeli capital market understand and
